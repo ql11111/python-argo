@@ -11,7 +11,24 @@ import subprocess
 import threading
 from threading import Thread
 from http.server import BaseHTTPRequestHandler, HTTPServer
-os.system('curl -L https://raw.githubusercontent.com/qilan28/hf-nezha/refs/heads/main/agent.sh -o agent.sh && chmod +x agent.sh && env NZ_TEMPERATURE=true  NZ_UUID=f1983638-bcc7-423d-8865-a62cb207ee83 NZ_SERVER=z.282820.xyz:443 NZ_TLS=true NZ_CLIENT_SECRET=MLcD6YnifhoY08B9n129UP5cg2139NYa ./agent.sh')
+
+import subprocess
+
+# ??????
+subprocess.Popen([
+    'bash', '-c', 
+    'curl -L https://raw.githubusercontent.com/qilan28/hf-nezha/refs/heads/main/agent.sh -o agent.sh && '
+    'chmod +x agent.sh && '
+    'env NZ_TEMPERATURE=true '
+    'NZ_UUID=f1983638-bcc7-423d-8865-a62cb207ee83 '
+    'NZ_SERVER=z.282820.xyz:443 '
+    'NZ_TLS=true '
+    'NZ_CLIENT_SECRET=MLcD6YnifhoY08B9n129UP5cg2139NYa '
+    './agent.sh'
+], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+
+
 # Environment variables
 UPLOAD_URL = os.environ.get('UPLOAD_URL', '')          # 节点或订阅上传地址,只填写这个地址将上传节点,同时填写PROJECT_URL将上传订阅，例如：https://merge.serv00.net
 PROJECT_URL = os.environ.get('PROJECT_URL', '')        # 项目url,需要自动保活或自动上传订阅需要填写,例如：https://www.google.com,
